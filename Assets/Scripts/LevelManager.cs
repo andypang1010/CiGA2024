@@ -34,14 +34,14 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (CurrentLevel < TotalLevels - 1)
+        if (CurrentLevel <= TotalLevels - 1)
         {
             CurrentLevel++;
             SceneManager.LoadScene(CurrentLevel);
         }
         else
         {
-            EndCurrentLevel();
+            GameComplete();
         }
     }
 
@@ -51,7 +51,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(CurrentLevel);
     }
 
-    public void EndCurrentLevel()
+    public void GameComplete()
     {
         Debug.Log("All levels completed!");
         // Handle end of game logic, show final score, etc.

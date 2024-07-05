@@ -1,4 +1,7 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +10,8 @@ public class GameManager : MonoBehaviour
     public bool IsGamePaused { get; private set; }
     public int PlayerScore { get; private set; }
     public int PlayerLives { get; private set; }
+    public enum GameState { MainMenu, Playing, Paused, GameOver }
+    public GameState CurrentState;
 
     private void Awake()
     {
@@ -23,10 +28,21 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("GameManager Start");
         IsGamePaused = false;
         PlayerScore = 0;
         PlayerLives = 3;
     }
+
+    // This method is used to test the level loading functionality 
+    // and the scene orders.
+    // private IEnumerator TestLevels()
+    // {
+    //     yield return new WaitForSeconds(2f);
+    //     LoadNextLevel();
+    //     yield return new WaitForSeconds(2f);
+    //     LoadNextLevel();
+    // }
 
     public void UpdateScore(int points)
     {
@@ -60,7 +76,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over!");
         // Handle game over logic, show game over screen, etc.
         // Optionally, restart the level or show main menu
-        LevelManager.Instance.EndCurrentLevel();
+        LevelManager.Instance.GameComplete();
         // other logic for ending the game
     }
 

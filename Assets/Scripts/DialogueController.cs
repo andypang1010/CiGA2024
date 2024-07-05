@@ -12,7 +12,9 @@ public class DialogueController : MonoBehaviour
 
     bool dialogueIsPlaying;
     Story currentStory;
-    
+
+    public TextMeshProUGUI TimeText;
+
     void Start()
     {
         dialogueIsPlaying = false;
@@ -21,16 +23,19 @@ public class DialogueController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) 
+        if (Input.GetKeyDown(KeyCode.E)
         && Physics.Raycast(player.transform.position, player.transform.forward, out RaycastHit hit, 1f)
-        && hit.collider.gameObject.CompareTag("NPC")) {
-            if (!dialoguePanel.activeSelf) {
+        && hit.collider.gameObject.CompareTag("NPC"))
+        {
+            if (!dialoguePanel.activeSelf)
+            {
 
                 // Enter dialogue mode
                 EnterDialogueMode(hit.collider.gameObject.name, hit.collider.gameObject.GetComponent<NPCDialogue>().inkJson);
             }
 
-            else {
+            else
+            {
                 // Progress through dialogue
                 ContinueStory();
             }
@@ -38,7 +43,8 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    void EnterDialogueMode(string npcName, TextAsset inkJson) {
+    void EnterDialogueMode(string npcName, TextAsset inkJson)
+    {
         currentStory = new Story(inkJson.text);
 
         dialogueIsPlaying = true;
@@ -47,23 +53,31 @@ public class DialogueController : MonoBehaviour
 
         npcText.text = npcName;
 
+        TimeText.GetComponent<TimeTextUpdate>().StopTimer();
+
         ContinueStory();
     }
 
-    void ExitDialogueMode() {
+    void ExitDialogueMode()
+    {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         player.GetComponent<PlayerController>().enabled = true;
 
         dialogueText.text = "";
+
+        TimeText.GetComponent<TimeTextUpdate>().ResumeTimer();
     }
 
-    void ContinueStory() {
-        if (currentStory.canContinue) {
+    void ContinueStory()
+    {
+        if (currentStory.canContinue)
+        {
             dialogueText.text = currentStory.Continue();
         }
 
-        else {
+        else
+        {
             ExitDialogueMode();
         }
     }

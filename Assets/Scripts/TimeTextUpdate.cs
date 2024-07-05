@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework.Internal;
@@ -10,6 +11,7 @@ public class TimeTextUpdate : MonoBehaviour
     [SerializeField] private float MaxTime = 12.10f;
     // Start is called before the first frame update
     TextMeshProUGUI text;
+    Boolean isTimerRunning = true;
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
@@ -19,12 +21,16 @@ public class TimeTextUpdate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TimeLeft -= Time.deltaTime;
+        if (isTimerRunning)
+        {
+            TimeLeft -= Time.deltaTime;
+        }
+
         text.SetText("Time Left: " + TimeLeft.ToString("00.00"));
         if (TimeLeft <= 0)
         {
             LevelManager.Instance.RestartCurrentLevel();
-            ResetTimer();
+            // ResetTimer(); // This is not needed as the level will be restarted
         }
     }
 
@@ -32,5 +38,15 @@ public class TimeTextUpdate : MonoBehaviour
     {
         TimeLeft = MaxTime;
         text.SetText("Time Left: " + TimeLeft.ToString("00.00"));
+    }
+
+    public void StopTimer()
+    {
+        isTimerRunning = false;
+    }
+
+    public void ResumeTimer()
+    {
+        isTimerRunning = true;
     }
 }

@@ -17,18 +17,21 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update() {
+    void Update()
+    {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
         Vector3 moveDir = new Vector3(x, 0, y);
         rb.velocity = moveDir * speed;
 
-        if (x != 0 && x < 0) {
+        if (x != 0 && x < 0)
+        {
             sr.flipX = true;
         }
 
-        else if (x != 0 && x > 0) {
+        else if (x != 0 && x > 0)
+        {
             sr.flipX = false;
         }
     }
@@ -37,14 +40,14 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 castPos = transform.position;
         castPos.y += 1;
-        if (Physics.Raycast(castPos, -transform.up, out RaycastHit hit, Mathf.Infinity, groundLayer)) {
-            if (hit.collider != null) {
+        if (Physics.Raycast(castPos, -transform.up, out RaycastHit hit, Mathf.Infinity, groundLayer))
+        {
+            if (hit.collider != null)
+            {
                 Vector3 movePos = transform.position;
                 movePos.y = hit.point.y + groundDistance;
                 transform.position = movePos;
             }
         }
-
-
     }
 }
