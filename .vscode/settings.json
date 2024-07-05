@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CiGA 2024.sln"
+    "dotnet.defaultSolution": "CiGA2024.sln"
 }
