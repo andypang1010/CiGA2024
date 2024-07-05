@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +28,10 @@ public class LevelManager : MonoBehaviour
         TotalLevels = SceneManager.sceneCountInBuildSettings;
     }
 
+    private void Update()
+    {
+    }
+
     public void LoadNextLevel()
     {
         if (CurrentLevel < TotalLevels - 1)
@@ -35,16 +41,17 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            EndGame();
+            EndCurrentLevel();
         }
     }
 
-    public void RestartLevel()
+    public void RestartCurrentLevel()
     {
+        Debug.Log("Restarting level " + CurrentLevel);
         SceneManager.LoadScene(CurrentLevel);
     }
 
-    private void EndGame()
+    public void EndCurrentLevel()
     {
         Debug.Log("All levels completed!");
         // Handle end of game logic, show final score, etc.

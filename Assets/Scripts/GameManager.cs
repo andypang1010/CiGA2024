@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over!");
         // Handle game over logic, show game over screen, etc.
         // Optionally, restart the level or show main menu
+        LevelManager.Instance.EndCurrentLevel();
+        // other logic for ending the game
     }
 
     public void LoadNextLevel()
@@ -69,6 +71,6 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        LevelManager.Instance.RestartLevel();
+        LevelManager.Instance.RestartCurrentLevel();
     }
 }
