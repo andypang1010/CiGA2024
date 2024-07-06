@@ -14,6 +14,7 @@ TagManager:
   - Ground
   - Water
   - UI
+  - 
   - Interactable
   - NPC
   - Button
@@ -39,8 +40,13 @@ TagManager:
   - 
   - 
   - 
-  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Effects
+    uniqueID: 2277973405
+    locked: 0
+  - name: Water
+    uniqueID: 1669960833
     locked: 0

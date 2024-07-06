@@ -53,32 +53,37 @@ public class PlayerController : MonoBehaviour
 
                 print(groundHit.collider.transform.parent.parent.gameObject);
 
-                if (groundHit.collider.transform.parent.parent.gameObject != null) {
-                   LevelManager.Instance.ShowActiveRoom(groundHit.collider.transform.parent.parent.gameObject);
+                if (groundHit.collider.transform.parent.parent.gameObject != null)
+                {
+                    LevelManager.Instance.ShowActiveRoom(groundHit.collider.transform.parent.parent.gameObject);
                 }
             }
         }
 
-        if (interactPressed) 
+        if (interactPressed)
         {
             GameObject[] interactables = Physics.OverlapSphere(transform.position, 1f, LayerMask.GetMask("Interactable")).Select(collider => collider.gameObject).ToArray();
 
-            if (interactables.Length == 0) {
+            if (interactables.Length == 0)
+            {
                 return;
             }
 
             float closestDistance = Mathf.Infinity;
             GameObject closestInteractable = null;
 
-            foreach (GameObject interactable in interactables) {
+            foreach (GameObject interactable in interactables)
+            {
                 float currentDistance = Vector3.Distance(transform.position, interactable.transform.position);
-                if (currentDistance < closestDistance) {
+                if (currentDistance < closestDistance)
+                {
                     closestDistance = currentDistance;
                     closestInteractable = interactable;
                 }
             }
 
-            switch (closestInteractable.tag) {
+            switch (closestInteractable.tag)
+            {
                 case "Door":
                     closestInteractable.GetComponent<MeshRenderer>().enabled = false;
                     closestInteractable.GetComponent<MeshCollider>().enabled = false;
