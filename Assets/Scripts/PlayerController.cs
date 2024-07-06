@@ -72,13 +72,13 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            switch (closestInteractable.name) {
+            switch (closestInteractable.tag) {
                 case "Door":
                     closestInteractable.GetComponent<MeshRenderer>().enabled = false;
                     closestInteractable.GetComponent<MeshCollider>().enabled = false;
                     break;
                 case "Pushable":
-                    print("Pushing object");
+                    closestInteractable.GetComponent<Rigidbody>().isKinematic = !closestInteractable.GetComponent<Rigidbody>().isKinematic;
                     break;
                 default:
                     break;
