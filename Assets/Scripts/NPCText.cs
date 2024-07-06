@@ -1,26 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class NPCText : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI text;
-    public Camera Camera;
-    public Canvas Canvas;
-    // Start is called before the first frame update
+    public Camera mainCamera;
+    public GameObject timeCanvas;
+    private Canvas thisCanvas;
+    public GameObject player;
+    public float appearDistance = 5f;
+
     void Start()
     {
-        text.transform.SetParent(Canvas.transform);
-        if (!text.TryGetComponent<FaceCamera>(out FaceCamera faceCamera))
-        {
-            faceCamera.mainCamera = Camera;
-        }
+        thisCanvas = timeCanvas.GetComponent<Canvas>();
+        thisCanvas.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        float distance = Vector3.Distance(player.transform.position, transform.position);
+        Debug.Log("Distance: " + distance);
 
+        if (distance <= appearDistance)
+        {
+            thisCanvas.enabled = true;
+
+            if (mainCamera != null)
+            {
+                // Make the canvas face the camera
+                transform.LookAt(mainCamera.transform);
+                transform.Rotate(0, 180, 0); // Rotate 180 degrees if the canvas appears backwards
+            }
+        }
+        else
+        {
+            thisCanvas.enabled = false;
+        }
     }
 }
