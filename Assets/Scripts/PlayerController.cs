@@ -51,8 +51,6 @@ public class PlayerController : MonoBehaviour
                 movePos.y = groundHit.point.y + groundDistance;
                 transform.position = movePos;
 
-                print(groundHit.collider.transform.parent.parent.gameObject);
-
                 if (groundHit.collider.transform.parent.parent.gameObject != null)
                 {
                     LevelManager.Instance.ShowActiveRoom(groundHit.collider.transform.parent.parent.gameObject);
@@ -60,28 +58,27 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (interactPressed)
+        GameObject[] interactables = Physics.OverlapSphere(transform.position, 1f, LayerMask.GetMask("Interactable")).Select(collider => collider.gameObject).ToArray();
+
+        if (interactables.Length == 0)
         {
-            GameObject[] interactables = Physics.OverlapSphere(transform.position, 1f, LayerMask.GetMask("Interactable")).Select(collider => collider.gameObject).ToArray();
+            return;
+        }
 
-            if (interactables.Length == 0)
+        float closestDistance = Mathf.Infinity;
+        GameObject closestInteractable = null;
+
+        foreach (GameObject interactable in interactables)
+        {
+            float currentDistance = Vector3.Distance(transform.position, interactable.transform.position);
+            if (currentDistance < closestDistance)
             {
-                return;
+                closestDistance = currentDistance;
+                closestInteractable = interactable;
             }
+        }
 
-            float closestDistance = Mathf.Infinity;
-            GameObject closestInteractable = null;
-
-            foreach (GameObject interactable in interactables)
-            {
-                float currentDistance = Vector3.Distance(transform.position, interactable.transform.position);
-                if (currentDistance < closestDistance)
-                {
-                    closestDistance = currentDistance;
-                    closestInteractable = interactable;
-                }
-            }
-
+        if (interactPressed) {
             switch (closestInteractable.tag)
             {
                 case "Door":
@@ -98,5 +95,6 @@ public class PlayerController : MonoBehaviour
                     break;
             }
         }
+            
     }
 }
