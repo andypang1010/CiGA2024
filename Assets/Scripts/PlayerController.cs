@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public SpriteRenderer sr;
     Rigidbody rb;
-    bool interactPressed;
+    bool interactPressed, mummyUndressed;
 
     void Start()
     {
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         interactPressed = Input.GetKeyDown(KeyCode.E);
+        mummyUndressed = Input.GetKeyDown(KeyCode.K);
 
         Vector3 moveDir = new Vector3(x, 0, y);
         rb.velocity = moveDir * speed;
@@ -51,9 +52,9 @@ public class PlayerController : MonoBehaviour
                 movePos.y = groundHit.point.y + groundDistance;
                 transform.position = movePos;
 
-                if (groundHit.collider.transform.parent.parent.gameObject != null)
+                if (groundHit.collider.transform.parent.gameObject != null)
                 {
-                    LevelManager.Instance.ShowActiveRoom(groundHit.collider.transform.parent.parent.gameObject);
+                    LevelManager.Instance.ShowActiveRoom(groundHit.collider.transform.parent.gameObject);
                 }
             }
         }
@@ -88,11 +89,22 @@ public class PlayerController : MonoBehaviour
                 case "Pushable":
                     closestInteractable.GetComponent<Rigidbody>().isKinematic = !closestInteractable.GetComponent<Rigidbody>().isKinematic;
                     break;
+                case "Portal":
+                    // TODO: Find destination and teleport there
+                    break;
                 case "Trap":
                     print("Trap triggered");
                     break;
                 default:
                     break;
+            }
+        }
+
+        else if (mummyUndressed) {
+            if (closestInteractable.CompareTag("NPC")) {
+                // TODO: Destroy mummy
+
+                // TODO: Instantiate a skeleton
             }
         }
             

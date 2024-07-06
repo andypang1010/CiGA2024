@@ -18,7 +18,10 @@ public class LevelManager : MonoBehaviour
     public GameObject[] deadSprites;
     public List<GameObject> rooms = new List<GameObject>();
     public CinemachineVirtualCamera virtualCamera;
-    Boolean hasInstantiatedBodies = false;
+    bool hasInstantiatedBodies = false;
+
+    public bool hasCoin1 = false;
+    public bool hasCoin2 = false;
 
     private void Awake()
     {
