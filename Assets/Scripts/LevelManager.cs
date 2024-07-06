@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using Cinemachine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class LevelManager : MonoBehaviour
     public ArrayList allDeaths = new ArrayList();
     public Queue<Vector3> activeDeaths = new Queue<Vector3>();
     public GameObject[] deadSprites;
+    public GameObject[] rooms;
+    public CinemachineVirtualCamera virtualCamera;
     Boolean hasInstantiatedBodies = false;
 
     private void Awake()
@@ -121,5 +124,29 @@ public class LevelManager : MonoBehaviour
         }
 
         hasInstantiatedBodies = true;
+    }
+
+    public void ShowActiveRoom(GameObject currentRoom) {
+        foreach (GameObject room in rooms)
+        {
+            GameObject roomFloor = room.transform.GetChild(0).gameObject;
+
+            if (currentRoom == room) {
+                virtualCamera.Follow = roomFloor.transform;
+                
+                for (int i = 1; i < room.transform.childCount; i++) {
+                    room.transform.GetChild(i).gameObject.SetActive(true);
+                }
+                roomFloor.GetComponent<MeshRenderer>().enabled = true;
+            }
+            else {
+                for (int i = 1; i < room.transform.childCount; i++) {
+                    room.transform.GetChild(i).gameObject.SetActive(false);
+                }
+                roomFloor.GetComponent<MeshRenderer>().enabled = false;
+            }
+
+            roomFloor.SetActive(true);
+        }
     }
 }

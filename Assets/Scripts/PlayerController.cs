@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour
                 Vector3 movePos = transform.position;
                 movePos.y = groundHit.point.y + groundDistance;
                 transform.position = movePos;
+
+                if (groundHit.collider.gameObject != null) {
+                   LevelManager.Instance.ShowActiveRoom(groundHit.collider.transform.parent.gameObject);
+                }
             }
         }
 

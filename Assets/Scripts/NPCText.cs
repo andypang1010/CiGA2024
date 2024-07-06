@@ -4,21 +4,20 @@ using UnityEngine;
 public class NPCText : MonoBehaviour
 {
     public Camera mainCamera;
-    public GameObject timeCanvas;
+    public GameObject canvas;
     private Canvas thisCanvas;
     public GameObject player;
     public float appearDistance = 5f;
 
     void Start()
     {
-        thisCanvas = timeCanvas.GetComponent<Canvas>();
+        thisCanvas = canvas.GetComponent<Canvas>();
         thisCanvas.enabled = false;
     }
 
     void Update()
     {
-        float distance = Vector3.Distance(player.transform.position, transform.position);
-        // Debug.Log("Distance: " + distance);
+        float distance = Vector3.Distance(player.transform.position, transform.root.position);
 
         if (distance <= appearDistance)
         {
