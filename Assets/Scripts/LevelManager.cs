@@ -137,14 +137,16 @@ public class LevelManager : MonoBehaviour
 
                 for (int i = 1; i < room.transform.childCount; i++) {
                     room.transform.GetChild(i).gameObject.SetActive(true);
+                    // print(room.transform.GetChild(i).gameObject);
                 }
-                roomFloor.GetComponent<MeshRenderer>().enabled = true;
+                roomFloor.GetComponentInChildren<MeshRenderer>().enabled = true;
             }
             else {
                 for (int i = 1; i < room.transform.childCount; i++) {
                     room.transform.GetChild(i).gameObject.SetActive(false);
+                    // print(room.transform.GetChild(i).gameObject);
                 }
-                roomFloor.GetComponent<MeshRenderer>().enabled = false;
+                roomFloor.GetComponentInChildren<MeshRenderer>().enabled = false;
             }
 
             roomFloor.SetActive(true);

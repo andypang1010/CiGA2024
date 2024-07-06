@@ -28,15 +28,15 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDir = new Vector3(x, 0, y);
         rb.velocity = moveDir * speed;
 
-        if (x != 0 && x < 0)
-        {
-            sr.flipX = true;
-        }
+        // if (x != 0 && x < 0)
+        // {
+        //     sr.flipX = true;
+        // }
 
-        else if (x != 0 && x > 0)
-        {
-            sr.flipX = false;
-        }
+        // else if (x != 0 && x > 0)
+        // {
+        //     sr.flipX = false;
+        // }
     }
 
     void FixedUpdate()
@@ -51,8 +51,10 @@ public class PlayerController : MonoBehaviour
                 movePos.y = groundHit.point.y + groundDistance;
                 transform.position = movePos;
 
-                if (groundHit.collider.transform.parent.gameObject != null) {
-                   LevelManager.Instance.ShowActiveRoom(groundHit.collider.transform.parent.gameObject);
+                print(groundHit.collider.transform.parent.parent.gameObject);
+
+                if (groundHit.collider.transform.parent.parent.gameObject != null) {
+                   LevelManager.Instance.ShowActiveRoom(groundHit.collider.transform.parent.parent.gameObject);
                 }
             }
         }
