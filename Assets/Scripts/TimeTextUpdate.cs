@@ -12,10 +12,14 @@ public class TimeTextUpdate : MonoBehaviour
     // Start is called before the first frame update
     TextMeshProUGUI text;
     Boolean isTimerRunning = true;
+    private GameObject player;
     void Start()
     {
+        player = GameObject.FindWithTag("Player"); // Find the player object
         text = GetComponent<TextMeshProUGUI>();
         ResetTimer();
+
+        LevelManager.Instance.instantiateActiveBodies();
     }
 
     // Update is called once per frame
@@ -29,7 +33,7 @@ public class TimeTextUpdate : MonoBehaviour
         text.SetText("Time Left: " + TimeLeft.ToString("00.00"));
         if (TimeLeft <= 0)
         {
-            LevelManager.Instance.RestartCurrentLevel();
+            tellLevelManagerToRestart();
             // ResetTimer(); // This is not needed as the level will be restarted
         }
     }
@@ -48,5 +52,11 @@ public class TimeTextUpdate : MonoBehaviour
     public void ResumeTimer()
     {
         isTimerRunning = true;
+    }
+
+    public void tellLevelManagerToRestart()
+    {
+        LevelManager.Instance.updatePlayerDeath(player.transform.position);
+        LevelManager.Instance.RestartCurrentLevel();
     }
 }
