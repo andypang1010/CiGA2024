@@ -68,6 +68,7 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Restarting level " + CurrentLevel);
         SceneManager.LoadScene(CurrentLevel);
         hasInstantiatedBodies = false;
+        Invoke("instantiateActiveBodies", 0.05f);
     }
 
     public void GameComplete()
@@ -105,16 +106,16 @@ public class LevelManager : MonoBehaviour
             switch (index)
             {
                 case 0:
-                    body.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death1"); ;
                     break;
                 case 1:
-                    body.GetComponentInChildren<SpriteRenderer>().color = Color.green;
+                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death2");
                     break;
                 case 2:
-                    body.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death3");
                     break;
                 case 3:
-                    body.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death4");
                     break;
                 default:
                     body.GetComponentInChildren<SpriteRenderer>().color = Color.white;
@@ -127,22 +128,27 @@ public class LevelManager : MonoBehaviour
         hasInstantiatedBodies = true;
     }
 
-    public void ShowActiveRoom(GameObject currentRoom) {
+    public void ShowActiveRoom(GameObject currentRoom)
+    {
         foreach (GameObject room in rooms)
         {
             GameObject roomFloor = room.transform.GetChild(0).gameObject;
 
-            if (currentRoom == room) {
+            if (currentRoom == room)
+            {
                 virtualCamera.Follow = roomFloor.transform;
 
-                for (int i = 1; i < room.transform.childCount; i++) {
+                for (int i = 1; i < room.transform.childCount; i++)
+                {
                     room.transform.GetChild(i).gameObject.SetActive(true);
                     // print(room.transform.GetChild(i).gameObject);
                 }
                 roomFloor.GetComponentInChildren<MeshRenderer>().enabled = true;
             }
-            else {
-                for (int i = 1; i < room.transform.childCount; i++) {
+            else
+            {
+                for (int i = 1; i < room.transform.childCount; i++)
+                {
                     room.transform.GetChild(i).gameObject.SetActive(false);
                     // print(room.transform.GetChild(i).gameObject);
                 }
@@ -153,12 +159,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void OnSceneLoad(Scene scene, LoadSceneMode mode) {
+    void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    {
         GameObject environment = GameObject.Find("ENVIRONMENT");
 
         rooms.Clear();
-        
-        for (int i = 0; i < environment.transform.childCount; i++) {
+
+        for (int i = 0; i < environment.transform.childCount; i++)
+        {
             rooms.Add(environment.transform.GetChild(i).gameObject);
         }
 

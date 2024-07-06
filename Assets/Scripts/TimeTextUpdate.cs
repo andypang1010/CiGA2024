@@ -18,8 +18,6 @@ public class TimeTextUpdate : MonoBehaviour
         player = GameObject.Find("PLAYER"); // Find the player object
         text = GetComponent<TextMeshProUGUI>();
         ResetTimer();
-
-        LevelManager.Instance.instantiateActiveBodies();
     }
 
     // Update is called once per frame

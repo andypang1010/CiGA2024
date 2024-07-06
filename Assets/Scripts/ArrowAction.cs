@@ -4,6 +4,12 @@ public class ArrowAction : MonoBehaviour
 {
     public LayerMask playerLayer; // Layer to detect the player
     public GameObject player;
+    public bool hasHit;
+
+    void Update()
+    {
+
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -16,6 +22,7 @@ public class ArrowAction : MonoBehaviour
                 Debug.Log("REAL PLAYER!");
                 other.gameObject.GetComponent<PlayerDeath>().Die();
             }
+            hasHit = true;
         }
     }
 }

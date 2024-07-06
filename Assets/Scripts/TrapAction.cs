@@ -62,6 +62,10 @@ public class TrapAction : MonoBehaviour
             float step = arrowSpeed * Time.deltaTime;
             arrow.transform.Translate(transform.forward * step, Space.World);
             distanceTraveled += step;
+            if (arrow.GetComponent<ArrowAction>().hasHit)
+            {
+                break;
+            }
             yield return null;
         }
 
