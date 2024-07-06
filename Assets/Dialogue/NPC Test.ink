@@ -1,7 +1,28 @@
-犹豫就会败北 果断就会白给
+->back_in_london
 
-你没资格啊 你没资格 正因如此你没资格
+=== back_in_london ===
 
-门无法从这一侧打开
+We arrived into London at 9.45pm exactly.
 
-臀部
+*	"There is not a moment to lose!"[] I declared.
+	-> hurry_outside
+
+*	"Monsieur, let us savour this moment!"[] I declared.
+	My master clouted me firmly around the head and dragged me out of the door.
+	-> dragged_outside
+
+*	[We hurried home] -> hurry_outside
+
+
+=== hurry_outside ===
+We hurried home to Savile Row -> as_fast_as_we_could
+
+
+=== dragged_outside ===
+He insisted that we hurried home to Savile Row
+-> as_fast_as_we_could
+
+
+=== as_fast_as_we_could ===
+<> as fast as we could.
+->DONE

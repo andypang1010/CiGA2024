@@ -6,40 +6,51 @@ using UnityEngine;
 
 public class DialogueController : MonoBehaviour
 {
-    public GameObject dialoguePanel;
-    public TMP_Text npcText, dialogueText;
     public GameObject player;
 
-    bool dialogueIsPlaying;
+    [Header("Dialogue")]
+    public GameObject dialoguePanel;
+    public TMP_Text npcText, dialogueText;
+
+    [Header("Choices")]
+    public GameObject[] choices;
+    TMP_Text[] choicesText;
+
     Story currentStory;
 
     public TextMeshProUGUI TimeText;
 
     void Start()
     {
-        dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+
+        choicesText = new TMP_Text[choices.Length];
+        int index = 0;
+
+        foreach (GameObject choice in choices) {
+            choicesText[index] = choice.GetComponentInChildren<TMP_Text>();
+            choice.SetActive(false);
+            index++;
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)
-        && Physics.Raycast(player.transform.position, player.transform.forward, out RaycastHit hit, 1f)
-        && hit.collider.gameObject.CompareTag("NPC"))
-        {
-            if (!dialoguePanel.activeSelf)
-            {
+        if (Input.GetKeyDown(KeyCode.E)) {
+            if (Physics.Raycast(player.transform.position, player.transform.forward, out RaycastHit hit, 1f)
+            && hit.collider.gameObject.CompareTag("NPC")
+            && !dialoguePanel.activeSelf) {
 
                 // Enter dialogue mode
                 EnterDialogueMode(hit.collider.gameObject.name, hit.collider.gameObject.GetComponent<NPCDialogue>().inkJson);
             }
-
-            else
-            {
+        
+            else if (dialoguePanel.activeSelf 
+            && currentStory.currentChoices.Count == 0) {
+                
                 // Progress through dialogue
                 ContinueStory();
             }
-
         }
     }
 
@@ -47,7 +58,6 @@ public class DialogueController : MonoBehaviour
     {
         currentStory = new Story(inkJson.text);
 
-        dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
         player.GetComponent<PlayerController>().enabled = false;
 
@@ -60,7 +70,6 @@ public class DialogueController : MonoBehaviour
 
     void ExitDialogueMode()
     {
-        dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         player.GetComponent<PlayerController>().enabled = true;
 
@@ -80,5 +89,29 @@ public class DialogueController : MonoBehaviour
         {
             ExitDialogueMode();
         }
+
+        DisplayChoices();
+    }
+
+    void DisplayChoices() {
+        List<Choice> currentChoices = currentStory.currentChoices;
+
+        int index = 0;
+
+        foreach (Choice choice in currentChoices) {
+            choices[index].gameObject.SetActive(true);
+            choicesText[index].text = choice.text;
+
+            index++;
+        }
+
+        for (int i = index; i < choices.Length; i++) {
+            choices[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void MakeChoice(int choiceIndex) {
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        ContinueStory();
     }
 }

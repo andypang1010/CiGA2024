@@ -436,7 +436,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: 0.00000002514374, z: -0.000000005935631, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: -0.000000018723053, z: 0.000000004419913, w: 0.973249}
   m_LocalPosition: {x: 0, y: 4, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1068,8 +1068,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Time Left: 10.00'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d52914fb3f1359b489b9ca4800213d59, type: 2}
+  m_sharedMaterial: {fileID: -2406453010774634841, guid: d52914fb3f1359b489b9ca4800213d59,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1205,6 +1206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efd0799e399ee049ac2b508c50c1ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CurrentState: 0
 --- !u!1 &1271822905
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,7 +1625,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690446704}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.0000000058788387, z: -0.0000000029394185, w: 1}
+  m_LocalRotation: {x: -0, y: -5.869083e-12, z: 2.9336533e-12, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1729,8 +1731,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: BOB
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d52914fb3f1359b489b9ca4800213d59, type: 2}
+  m_sharedMaterial: {fileID: -2406453010774634841, guid: d52914fb3f1359b489b9ca4800213d59,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1946,8 +1949,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d52914fb3f1359b489b9ca4800213d59, type: 2}
+  m_sharedMaterial: {fileID: -2406453010774634841, guid: d52914fb3f1359b489b9ca4800213d59,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
