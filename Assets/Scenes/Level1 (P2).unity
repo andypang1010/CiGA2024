@@ -1224,7 +1224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28620985, y: 0.010391738, z: -0.003026216, w: 0.95810586}
+  m_LocalRotation: {x: 0.2862096, y: 0.010455375, z: -0.0030437105, w: 0.9581052}
   m_LocalPosition: {x: -1.0464752, y: 7.6544704, z: -7.4186525}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5648,6 +5648,28 @@ PrefabInstance:
     - target: {fileID: 1229764006199881903, guid: e718f90622ed3d24f980ca65d163740d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647329804784851774, guid: e718f90622ed3d24f980ca65d163740d,
+        type: 3}
+      propertyPath: m_text
+      value: "\u65F6\u95F4\u8FD8\u5269\uFF1A00:00"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647329804784851774, guid: e718f90622ed3d24f980ca65d163740d,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e4c6f8fd20de5a48a7c93cc71a34343,
+        type: 2}
+    - target: {fileID: 1647329804784851774, guid: e718f90622ed3d24f980ca65d163740d,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7966373469429166671, guid: 5e4c6f8fd20de5a48a7c93cc71a34343,
+        type: 2}
+    - target: {fileID: 1647329804784851774, guid: e718f90622ed3d24f980ca65d163740d,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5024346811661247152, guid: e718f90622ed3d24f980ca65d163740d,
