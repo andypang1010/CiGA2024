@@ -74,7 +74,8 @@ public class PlayerController : MonoBehaviour
 
             switch (closestInteractable.name) {
                 case "Door":
-                    print("Opening door");
+                    closestInteractable.GetComponent<MeshRenderer>().enabled = false;
+                    closestInteractable.GetComponent<MeshCollider>().enabled = false;
                     break;
                 case "Pushable":
                     print("Pushing object");
