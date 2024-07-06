@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public SpriteRenderer sr;
     Rigidbody rb;
+    bool interactPressed;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+        interactPressed = Input.GetKeyDown(KeyCode.E);
 
         Vector3 moveDir = new Vector3(x, 0, y);
         rb.velocity = moveDir * speed;
@@ -40,13 +42,28 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 castPos = transform.position;
         castPos.y += 1;
-        if (Physics.Raycast(castPos, -transform.up, out RaycastHit hit, Mathf.Infinity, groundLayer))
+        if (Physics.Raycast(castPos, -transform.up, out RaycastHit groundHit, Mathf.Infinity, groundLayer))
         {
-            if (hit.collider != null)
+            if (groundHit.collider != null)
             {
                 Vector3 movePos = transform.position;
-                movePos.y = hit.point.y + groundDistance;
+                movePos.y = groundHit.point.y + groundDistance;
                 transform.position = movePos;
+            }
+        }
+
+        if (interactPressed
+        && Physics.Raycast(transform.position, transform.forward, out RaycastHit interactHit, 1f)
+        && interactHit.collider.gameObject.CompareTag("Interactable")) {
+            switch (interactHit.collider.gameObject.name) {
+                case "Door":
+                    print("Opening door");
+                    break;
+                case "Pushable":
+                    print("Pushing object");
+                    break;
+                default:
+                    break;
             }
         }
     }

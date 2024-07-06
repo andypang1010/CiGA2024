@@ -36,6 +36,7 @@ public class DialogueController : MonoBehaviour
 
     void Update()
     {
+        Debug.DrawLine(player.transform.position, player.transform.position + player.transform.forward);
         if (Input.GetKeyDown(KeyCode.E)) {
             if (Physics.Raycast(player.transform.position, player.transform.forward, out RaycastHit hit, 1f)
             && hit.collider.gameObject.CompareTag("NPC")
