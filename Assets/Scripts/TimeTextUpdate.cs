@@ -11,7 +11,7 @@ public class TimeTextUpdate : MonoBehaviour
     [SerializeField] private float MaxTime = 12.10f;
     // Start is called before the first frame update
     TextMeshProUGUI text;
-    Boolean isTimerRunning = true;
+    bool isTimerRunning = true;
     private GameObject player;
     void Start()
     {
@@ -28,8 +28,8 @@ public class TimeTextUpdate : MonoBehaviour
             TimeLeft -= Time.deltaTime;
         }
 
-        text.SetText("Time Left: " + TimeLeft.ToString("00.00"));
-        if (TimeLeft <= 0)
+        text.SetText("剩余时间：" + TimeLeft.ToString("00.00"));
+        if (TimeLeft <= 0f)
         {
             tellLevelManagerToRestart();
             // ResetTimer(); // This is not needed as the level will be restarted
