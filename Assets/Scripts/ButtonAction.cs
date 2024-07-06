@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,24 +9,74 @@ public class ButtonAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Debug.Log("Player layer: " + playerLayer.value);
+        Debug.Log(player.name);
     }
 
-    // Update is called once per frame
+    public LayerMask playerLayer; // Layer for the player
+    public GameObject player;
+    public Vector3 boxSize = new Vector3(1, 0.1f, 1); // Size of the boxcast
+    public bool isPlayerOnButton = false; // To store the result
+    private bool hasMovedUp = false;
+
     void Update()
     {
-
+        // BOX CAST IS VERY UNINTUITIVE. IT IS NOT A BOX COLLIDER. IT IS A BOX THAT IS CASTED IN A DIRECTION
+        // AND THE BOX ITSELF DOES NOT COUNT.
+        CheckIfPlayerIsOnButton();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void CheckIfPlayerIsOnButton()
     {
-        if (other.gameObject.tag == "Player")
+        Vector3 boxCenter = transform.position + Vector3.up * (boxSize.y / 2); // Center of the boxcast
+
+        // BOX CAST IS VERY UNINTUITIVE. IT IS NOT A BOX COLLIDER. IT IS A BOX THAT IS CASTED IN A DIRECTION
+        // AND THE BOX ITSELF DOES NOT COUNT.
+        isPlayerOnButton = Physics.BoxCast(transform.position,
+                                        boxSize / 2,
+                                        Vector3.up,
+                                        out RaycastHit hit,
+                                        Quaternion.identity,
+                                        1f,
+                                        playerLayer,
+                                        QueryTriggerInteraction.Collide);
+
+        if (isPlayerOnButton && !hasMovedUp)
         {
             // Move the object up
             if (moveUpObject != null)
             {
                 moveUpObject.GetComponent<ObjectAction>().StartMoveUp();
             }
+            hasMovedUp = true;
+        }
+        else if (!isPlayerOnButton && hasMovedUp)
+        {
+            // Move the object down
+            if (moveUpObject != null)
+            {
+                moveUpObject.GetComponent<ObjectAction>().StartMoveDown();
+            }
+            hasMovedUp = false;
         }
     }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.matrix = Matrix4x4.TRS(transform.position + Vector3.up * (boxSize.y / 2), Quaternion.identity, boxSize);
+        Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+    }
+
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.gameObject.tag == "Player")
+    //     {
+    //         // Move the object up
+    //         if (moveUpObject != null)
+    //         {
+    //             moveUpObject.GetComponent<ObjectAction>().StartMoveUp();
+    //         }
+    //     }
+    // }
 }
