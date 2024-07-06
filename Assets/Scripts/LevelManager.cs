@@ -106,16 +106,16 @@ public class LevelManager : MonoBehaviour
             switch (index)
             {
                 case 0:
-                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death1"); ;
+                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death4"); ;
                     break;
                 case 1:
-                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death2");
-                    break;
-                case 2:
                     body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death3");
                     break;
+                case 2:
+                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death2");
+                    break;
                 case 3:
-                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death4");
+                    body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death1");
                     break;
                 default:
                     body.GetComponentInChildren<SpriteRenderer>().color = Color.white;
