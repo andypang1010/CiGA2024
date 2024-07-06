@@ -27,7 +27,8 @@ public class DialogueController : MonoBehaviour
         choicesText = new TMP_Text[choices.Length];
         int index = 0;
 
-        foreach (GameObject choice in choices) {
+        foreach (GameObject choice in choices)
+        {
             choicesText[index] = choice.GetComponentInChildren<TMP_Text>();
             choice.SetActive(false);
             index++;
@@ -37,18 +38,21 @@ public class DialogueController : MonoBehaviour
     void Update()
     {
         Debug.DrawLine(player.transform.position, player.transform.position + player.transform.forward);
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
             if (Physics.Raycast(player.transform.position, player.transform.forward, out RaycastHit hit, 1f)
             && hit.collider.gameObject.CompareTag("NPC")
-            && !dialoguePanel.activeSelf) {
-
+            && !dialoguePanel.activeSelf)
+            {
+                Debug.Log(hit.collider.gameObject.name + " was collided.");
                 // Enter dialogue mode
                 EnterDialogueMode(hit.collider.gameObject.name, hit.collider.gameObject.GetComponent<NPCDialogue>().inkJson);
             }
-        
-            else if (dialoguePanel.activeSelf 
-            && currentStory.currentChoices.Count == 0) {
-                
+
+            else if (dialoguePanel.activeSelf
+            && currentStory.currentChoices.Count == 0)
+            {
+
                 // Progress through dialogue
                 ContinueStory();
             }
@@ -94,24 +98,28 @@ public class DialogueController : MonoBehaviour
         DisplayChoices();
     }
 
-    void DisplayChoices() {
+    void DisplayChoices()
+    {
         List<Choice> currentChoices = currentStory.currentChoices;
 
         int index = 0;
 
-        foreach (Choice choice in currentChoices) {
+        foreach (Choice choice in currentChoices)
+        {
             choices[index].gameObject.SetActive(true);
             choicesText[index].text = choice.text;
 
             index++;
         }
 
-        for (int i = index; i < choices.Length; i++) {
+        for (int i = index; i < choices.Length; i++)
+        {
             choices[i].gameObject.SetActive(false);
         }
     }
 
-    public void MakeChoice(int choiceIndex) {
+    public void MakeChoice(int choiceIndex)
+    {
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
     }
