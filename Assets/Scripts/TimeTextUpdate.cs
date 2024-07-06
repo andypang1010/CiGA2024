@@ -15,7 +15,7 @@ public class TimeTextUpdate : MonoBehaviour
     private GameObject player;
     void Start()
     {
-        player = GameObject.FindWithTag("Player"); // Find the player object
+        player = GameObject.Find("PLAYER"); // Find the player object
         text = GetComponent<TextMeshProUGUI>();
         ResetTimer();
 
