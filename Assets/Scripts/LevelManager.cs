@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     public ArrayList allDeaths = new ArrayList();
     public Queue<Vector3> activeDeaths = new Queue<Vector3>();
     public GameObject[] deadSprites;
-    public GameObject[] rooms;
+    public List<GameObject> rooms = new List<GameObject>();
     public CinemachineVirtualCamera virtualCamera;
     Boolean hasInstantiatedBodies = false;
 
@@ -30,6 +30,7 @@ public class LevelManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoad;
         }
     }
 
@@ -133,7 +134,7 @@ public class LevelManager : MonoBehaviour
 
             if (currentRoom == room) {
                 virtualCamera.Follow = roomFloor.transform;
-                
+
                 for (int i = 1; i < room.transform.childCount; i++) {
                     room.transform.GetChild(i).gameObject.SetActive(true);
                 }
@@ -148,5 +149,17 @@ public class LevelManager : MonoBehaviour
 
             roomFloor.SetActive(true);
         }
+    }
+
+    void OnSceneLoad(Scene scene, LoadSceneMode mode) {
+        GameObject environment = GameObject.Find("ENVIRONMENT");
+
+        rooms.Clear();
+        
+        for (int i = 0; i < environment.transform.childCount; i++) {
+            rooms.Add(environment.transform.GetChild(i).gameObject);
+        }
+
+        virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
     }
 }
