@@ -64,6 +64,7 @@ public class TrapAction : MonoBehaviour
             distanceTraveled += step;
             if (arrow.GetComponent<ArrowAction>().hasHit)
             {
+                // TODO: BUG: Arrow won't be re-shot by this code
                 break;
             }
             yield return null;
