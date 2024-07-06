@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -52,10 +53,26 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (interactPressed
-        && Physics.Raycast(transform.position, transform.forward, out RaycastHit interactHit, 1f)
-        && interactHit.collider.gameObject.CompareTag("Interactable")) {
-            switch (interactHit.collider.gameObject.name) {
+        if (interactPressed) 
+        {
+            GameObject[] interactables = Physics.OverlapSphere(transform.position, 1f, LayerMask.GetMask("Interactable")).Select(collider => collider.gameObject).ToArray();
+
+            if (interactables.Length == 0) {
+                return;
+            }
+
+            float closestDistance = Mathf.Infinity;
+            GameObject closestInteractable = null;
+
+            foreach (GameObject interactable in interactables) {
+                float currentDistance = Vector3.Distance(transform.position, interactable.transform.position);
+                if (currentDistance < closestDistance) {
+                    closestDistance = currentDistance;
+                    closestInteractable = interactable;
+                }
+            }
+
+            switch (closestInteractable.name) {
                 case "Door":
                     print("Opening door");
                     break;

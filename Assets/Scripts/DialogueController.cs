@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine;
@@ -37,23 +38,33 @@ public class DialogueController : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawLine(player.transform.position, player.transform.position + player.transform.forward);
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (Physics.Raycast(player.transform.position, player.transform.forward, out RaycastHit hit, 1f)
-            && hit.collider.gameObject.CompareTag("NPC")
-            && !dialoguePanel.activeSelf)
+            GameObject[] NPCs = Physics.OverlapSphere(player.transform.position, 1f, LayerMask.GetMask("NPC")).Select(collider => collider.gameObject).ToArray();
+
+            if (NPCs.Length == 0) {
+                return;
+            }
+
+            float closestDistance = Mathf.Infinity;
+            GameObject closestNPC = null;
+
+            foreach (GameObject npc in NPCs) {
+                float currentDistance = Vector3.Distance(player.transform.position, npc.transform.position);
+                if (currentDistance < closestDistance) {
+                    closestDistance = currentDistance;
+                    closestNPC = npc;
+                }
+            }
+
+            if (!dialoguePanel.activeSelf)
             {
-                Debug.Log(hit.collider.gameObject.name + " was collided.");
-                // Enter dialogue mode
-                EnterDialogueMode(hit.collider.gameObject.name, hit.collider.gameObject.GetComponent<NPCDialogue>().inkJson);
+                EnterDialogueMode(closestNPC.name, closestNPC.GetComponent<NPCDialogue>().inkJson);
             }
 
             else if (dialoguePanel.activeSelf
             && currentStory.currentChoices.Count == 0)
             {
-
-                // Progress through dialogue
                 ContinueStory();
             }
         }
@@ -122,5 +133,9 @@ public class DialogueController : MonoBehaviour
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(player.transform.position, 1f);
     }
 }

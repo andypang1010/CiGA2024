@@ -18,7 +18,7 @@ public class NPCText : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(player.transform.position, transform.position);
-        Debug.Log("Distance: " + distance);
+        // Debug.Log("Distance: " + distance);
 
         if (distance <= appearDistance)
         {
