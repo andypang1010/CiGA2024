@@ -1,0 +1,41 @@
+# Blender MTL File: 'untitled.blend'
+# Material Count: 3
+
+newmtl (null)
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.600000 0.600000 0.600000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump CIGA\\01\\1_11\\untitled_(null)_Normal.1001.png
+map_Kd CIGA\\01\\1_11\\untitled_(null)_AlbedoTransparency.1001.png
+map_Ks CIGA\\01\\1_11\\untitled_(null)_SpecularSmoothness.1001.png
+
+newmtl Material.007
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump CIGA\\01\\1_12\\untitled_None_Normal.1001.png
+map_Kd CIGA\\01\\1_12\\untitled_None_AlbedoTransparency.1001.png
+map_Ks CIGA\\01\\1_12\\untitled_None_SpecularSmoothness.1001.png
+
+newmtl Material.008
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump CIGA\\01\\1_08\\02\\untitled_None_Normal.1001.png
+map_Kd CIGA\\01\\1_08\\02\\untitled_None_AlbedoTransparency.1001.png
+map_Ks CIGA\\01\\1_08\\02\\untitled_None_SpecularSmoothness.1001.png

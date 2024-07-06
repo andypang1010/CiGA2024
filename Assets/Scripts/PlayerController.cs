@@ -86,6 +86,9 @@ public class PlayerController : MonoBehaviour
                 case "Pushable":
                     closestInteractable.GetComponent<Rigidbody>().isKinematic = !closestInteractable.GetComponent<Rigidbody>().isKinematic;
                     break;
+                case "Trap":
+                    print("Trap triggered");
+                    break;
                 default:
                     break;
             }
