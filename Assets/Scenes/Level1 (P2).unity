@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed7fa2430f3a484e8b01367c1edd0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 330585545}
   canvas: {fileID: 635060238}
   player: {fileID: 1530727785}
   appearDistance: 1.5
@@ -1224,7 +1224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28620985, y: 0.010383496, z: -0.00302395, w: 0.958106}
+  m_LocalRotation: {x: 0.28620985, y: 0.010391738, z: -0.003026216, w: 0.95810586}
   m_LocalPosition: {x: -1.0464752, y: 7.6544704, z: -7.4186525}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2684,7 +2684,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 641470988}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 476891d2cd6027a498fd3ccf8cf94370,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1012866187}
   m_SourcePrefab: {fileID: 100100000, guid: 476891d2cd6027a498fd3ccf8cf94370, type: 3}
 --- !u!4 &1012866185 stripped
 Transform:
@@ -2692,6 +2696,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1012866184}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1012866186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 476891d2cd6027a498fd3ccf8cf94370,
+    type: 3}
+  m_PrefabInstance: {fileID: 1012866184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1012866187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012866186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a5eaecabd7ad04597d533b8a306abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1090311225
 GameObject:
   m_ObjectHideFlags: 0
