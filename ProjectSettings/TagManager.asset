@@ -8,6 +8,7 @@ TagManager:
   - Pushable
   - Trap
   - Portal
+  - Sacrifice
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Water2
   - Interactable
   - NPC
   - Button

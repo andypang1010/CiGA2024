@@ -5407,6 +5407,7 @@ MonoBehaviour:
     m_Bits: 16
   player: {fileID: 1530727785}
   hasHit: 0
+  hasHit: 0
 --- !u!65 &1227827426
 BoxCollider:
   m_ObjectHideFlags: 0
