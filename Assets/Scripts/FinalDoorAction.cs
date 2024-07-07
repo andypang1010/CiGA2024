@@ -25,8 +25,10 @@ public class FinalDoorAction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("final door triggered!");
         if (other.gameObject.name == "PLAYER")
         {
+            Debug.Log("player final door calling game complete!");
             LevelManager.Instance.GameComplete();
         }
     }
