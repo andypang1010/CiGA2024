@@ -7,12 +7,12 @@ public class SadDoorAction : MonoBehaviour
 {
     public Transform destination;
     public ObjectAction objectAction;
-    void Start()
-    {
-        SceneManager.sceneLoaded += OnSceneLoad;
-    }
+    // void Start()
+    // {
+    //     SceneManager.sceneLoaded += OnSceneLoad;
+    // }
 
-    private void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    void Update()
     {
         if (LevelManager.Instance.hasCoin1)
         {

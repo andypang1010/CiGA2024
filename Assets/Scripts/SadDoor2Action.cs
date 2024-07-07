@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class SadDoor2Action : MonoBehaviour
 {
     public Transform destination;
-    void Start()
-    {
-        SceneManager.sceneLoaded += OnSceneLoad;
-    }
+    // void Start()
+    // {
+    //     SceneManager.sceneLoaded += OnSceneLoad;
+    // }
 
-    private void OnSceneLoad(Scene scene, LoadSceneMode mode)
+    void Update()
     {
         if (LevelManager.Instance.hasCoin2)
         {

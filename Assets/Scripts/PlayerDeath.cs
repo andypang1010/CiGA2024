@@ -27,6 +27,7 @@ public class PlayerDeath : MonoBehaviour
         Invoke("ResetLevel", 2f);
         Debug.Log("Player died!");
         hasDied = true;
+        GetComponent<PlayerController>().enabled = false;
     }
 
     void ResetLevel()

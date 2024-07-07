@@ -22,8 +22,15 @@ public class AIController : MonoBehaviour
     }
 
     void Update()
-    {
-        if (player.GetComponent<PlayerController>().currentRoom == transform.parent.gameObject) {
+    {   
+        // Found skeleton
+        if (Physics.Raycast(GameObject.Find("PlayerSkeleton(Clone)").transform.position, Vector3.down, out RaycastHit hit, LayerMask.GetMask("Ground"))
+        && hit.collider.transform.parent == transform.parent) {
+            animator.SetBool(playerFoundHash, true);
+            agent.SetDestination(LevelManager.Instance.deadSprites[0].transform.position);
+        }
+
+        else if (player.GetComponent<PlayerController>().currentRoom == transform.parent.gameObject) {
             animator.SetBool(playerFoundHash, true);
             agent.SetDestination(player.transform.position);
         }
@@ -41,10 +48,6 @@ public class AIController : MonoBehaviour
 
             // Play player dead animation
             player.GetComponent<PlayerDeath>().Die();
-        }
-
-        else if (other.transform.gameObject.CompareTag("Player")) {
-            // Play eating bone animation
         }
     }
 }

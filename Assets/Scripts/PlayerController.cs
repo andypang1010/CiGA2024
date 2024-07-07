@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundLayer;
     public SpriteRenderer sr;
+    public GameObject mummySkeleton;
     Rigidbody rb;
     bool interactPressed, mummyUndressed;
 
@@ -84,16 +85,23 @@ public class PlayerController : MonoBehaviour
         if (interactPressed && closestInteractable.CompareTag("Portal")) {
             print("Portal");
             // Find destination and teleport there
-            SadDoorAction sadDoorAction = closestInteractable.GetComponentInParent<SadDoorAction>();
-            
-            sadDoorAction.objectAction.StartMoveUp();
-            transform.position = sadDoorAction.destination.position;
+            if (closestInteractable.transform.parent.gameObject.TryGetComponent(out SadDoorAction sadDoorAction)) {
+                sadDoorAction.objectAction.StartMoveUp();
+                transform.position = sadDoorAction.destination.position;
+            }
+
+            else if (closestInteractable.transform.parent.gameObject.TryGetComponent(out SadDoor2Action sadDoor2Action)) {
+                transform.position = sadDoor2Action.destination.position;
+            }
+
         }
 
         if (mummyUndressed && closestInteractable.CompareTag("NPC")) {
-                // TODO: Destroy mummy
+            print("Mummy");
+            
+            Instantiate(mummySkeleton, closestInteractable.transform.position, closestInteractable.transform.rotation);
+            Destroy(closestInteractable);
 
-                // TODO: Instantiate a skeleton
         }            
     }
 }
