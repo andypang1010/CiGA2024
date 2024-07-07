@@ -28,7 +28,7 @@ public class TimeTextUpdate : MonoBehaviour
             TimeLeft -= Time.deltaTime;
         }
 
-        text.SetText("剩余时间：" + TimeLeft.ToString("00.00"));
+        text.SetText("" + TimeLeft.ToString("00.00"));
         if (TimeLeft <= 0f)
         {
             tellLevelManagerToRestart();
@@ -39,7 +39,7 @@ public class TimeTextUpdate : MonoBehaviour
     private void ResetTimer()
     {
         TimeLeft = MaxTime;
-        text.SetText("Time Left: " + TimeLeft.ToString("00.00"));
+        text.SetText("" + TimeLeft.ToString("00.00"));
     }
 
     public void StopTimer()
