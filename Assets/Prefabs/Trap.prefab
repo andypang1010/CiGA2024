@@ -126,7 +126,7 @@ MonoBehaviour:
   boxCastSize: {x: 0.005, y: 0.008, z: 0.003}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 80
+    m_Bits: 208
   arrow: {fileID: 7224196023099722886}
   arrowSpeed: 20
 --- !u!1 &7224196023099722886
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerLayer:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 208
   player: {fileID: 0}
   hasHit: 0
 --- !u!1001 &6664207726423052440
