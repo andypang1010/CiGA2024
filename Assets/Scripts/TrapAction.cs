@@ -48,7 +48,7 @@ public class TrapAction : MonoBehaviour
         }
         else
         {
-            Debug.Log("Player is NOT in the laser beam.");
+            // Debug.Log("Player is NOT in the laser beam.");
         }
     }
 

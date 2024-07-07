@@ -9,8 +9,8 @@ public class ButtonAction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Player layer: " + playerLayer.value);
-        Debug.Log(player.name);
+        // Debug.Log("Player layer: " + playerLayer.value);
+        // Debug.Log(player.name);
     }
 
     public LayerMask playerLayer; // Layer for the player
