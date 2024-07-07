@@ -34,6 +34,7 @@ public class ObjectAction : MonoBehaviour
     // Start the coroutine to move the object
     public void StartMoveUp()
     {
+        Debug.Log("StartMoveUp");
         if (!hasStartedMovingForward)
         {
             hasStartedMovingForward = true;
