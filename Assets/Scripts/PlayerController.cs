@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     public float groundDistance;
+    public GameObject currentRoom;
 
     public LayerMask groundLayer;
     public SpriteRenderer sr;
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
                 if (groundHit.collider.transform.parent.gameObject != null)
                 {
+                    currentRoom = groundHit.collider.transform.parent.gameObject;
                     LevelManager.Instance.ShowActiveRoom(groundHit.collider.transform.parent.gameObject);
                 }
             }
