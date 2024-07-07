@@ -168,6 +168,10 @@ public class LevelManager : MonoBehaviour
                 foreach (SpriteRenderer sr in room.GetComponentsInChildren<SpriteRenderer>()) {
                     sr.enabled = true;
                 }
+
+                foreach (Canvas canvas in room.GetComponentsInChildren<Canvas>()) {
+                    canvas.enabled = true;
+                }
             }
 
             else
@@ -184,6 +188,10 @@ public class LevelManager : MonoBehaviour
 
                 foreach (SpriteRenderer sr in room.GetComponentsInChildren<SpriteRenderer>()) {
                     sr.enabled = false;
+                }
+
+                foreach (Canvas canvas in room.GetComponentsInChildren<Canvas>()) {
+                    canvas.enabled = false;
                 }
             }
 

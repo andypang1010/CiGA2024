@@ -18,14 +18,16 @@ public class SadDoorAction : MonoBehaviour
         {
             GetComponentInChildren<Canvas>().enabled = true;
 
-            gameObject.tag = "Portal";
+            transform.GetChild(0).tag = "Portal";
+            transform.GetChild(1).tag = "Portal";
         }
 
         else
         {
             GetComponentInChildren<Canvas>().enabled = false;
 
-            gameObject.tag = "Untagged";
+            transform.GetChild(0).tag = "Untagged";
+            transform.GetChild(1).tag = "Untagged";
         }
     }
 }
