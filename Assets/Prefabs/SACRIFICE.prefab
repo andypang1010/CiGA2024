@@ -262,6 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b89327ae3aa624488516df1ae681db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 3600
+  rotationDuration: 0.5
 --- !u!1 &3278665033011237540
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +312,7 @@ MonoBehaviour:
   boxCastSize: {x: 1.25, y: 0.06, z: 1.14}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
 --- !u!1 &6177902023826666416
 GameObject:
   m_ObjectHideFlags: 0
