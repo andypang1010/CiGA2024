@@ -313,6 +313,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 4241092933390603382, guid: 513ff0a96efb8ab42ae6bac5c464544d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4626259024812518215, guid: 513ff0a96efb8ab42ae6bac5c464544d,
         type: 3}
       propertyPath: m_LocalScale.x
