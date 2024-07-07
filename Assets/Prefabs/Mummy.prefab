@@ -228,7 +228,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   canvas: {fileID: 4989616882527177190}
   player: {fileID: 0}
-  appearDistance: 1.5
+  appearDistance: 4
 --- !u!1 &3959605780170550481
 GameObject:
   m_ObjectHideFlags: 0
