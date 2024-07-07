@@ -23,6 +23,8 @@ public class LevelManager : MonoBehaviour
 
     public bool hasCoin1 = false;
     public bool hasCoin2 = false;
+    public bool moveBed = false;
+    public bool finalDoorOpen = false;
 
     private void Awake()
     {
@@ -69,16 +71,27 @@ public class LevelManager : MonoBehaviour
 
     public void RestartCurrentLevel()
     {
+        // wrap up actions before we restart the level
+        if (moveBed) finalDoorOpen = true;
+        // maybe more... 
+
         Debug.Log("Restarting level " + CurrentLevel);
         SceneManager.LoadScene(CurrentLevel);
         hasInstantiatedBodies = false;
         Invoke("instantiateActiveBodies", 0.05f);
+        Invoke("checkMoveBed", 0.05f);
     }
 
     public void GameComplete()
     {
         Debug.Log("All levels completed!");
         // Handle end of game logic, show final score, etc.
+
+        // darken the current scene gradually in 3 seconds
+
+        // add a fade-in
+        // switch to scene "Victory"
+        SceneManager.LoadScene("Victory");
     }
 
     public void updatePlayerDeath(Vector3 newDeathPos)
@@ -142,22 +155,26 @@ public class LevelManager : MonoBehaviour
             {
                 virtualCamera.Follow = roomFloor.transform;
 
-                foreach (MeshRenderer mr in room.GetComponentsInChildren<MeshRenderer>()) {
+                foreach (MeshRenderer mr in room.GetComponentsInChildren<MeshRenderer>())
+                {
                     mr.enabled = true;
                 }
 
-                foreach (VisualEffect vfx in room.GetComponentsInChildren<VisualEffect>()) {
+                foreach (VisualEffect vfx in room.GetComponentsInChildren<VisualEffect>())
+                {
                     vfx.enabled = true;
                 }
             }
 
             else
             {
-                foreach (MeshRenderer mr in room.GetComponentsInChildren<MeshRenderer>()) {
+                foreach (MeshRenderer mr in room.GetComponentsInChildren<MeshRenderer>())
+                {
                     mr.enabled = false;
                 }
 
-                foreach (VisualEffect vfx in room.GetComponentsInChildren<VisualEffect>()) {
+                foreach (VisualEffect vfx in room.GetComponentsInChildren<VisualEffect>())
+                {
                     vfx.enabled = false;
                 }
             }
@@ -178,5 +195,15 @@ public class LevelManager : MonoBehaviour
         }
 
         virtualCamera = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+    }
+
+    public void checkMoveBed()
+    {
+        if (moveBed)
+        {
+            Debug.Log("Moving bed up");
+            GameObject bed = GameObject.Find("Bed");
+            bed.GetComponent<ObjectAction>().StartMoveUp();
+        }
     }
 }
