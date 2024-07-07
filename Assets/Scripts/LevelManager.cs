@@ -42,7 +42,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        CurrentLevel = SceneManager.GetActiveScene().buildIndex;
         TotalLevels = SceneManager.sceneCountInBuildSettings;
 
         // fill queue with dummy objects
@@ -54,6 +53,7 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
+        CurrentLevel = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void LoadNextLevel()
