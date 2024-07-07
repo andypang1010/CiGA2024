@@ -270,9 +270,9 @@ GameObject:
   - component: {fileID: 2727030698786221494}
   - component: {fileID: 4748031503895706721}
   - component: {fileID: 4859846344595677189}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Bed
-  m_TagString: Pushable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

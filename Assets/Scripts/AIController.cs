@@ -23,14 +23,14 @@ public class AIController : MonoBehaviour
 
     void Update()
     {   
-        // Found skeleton
-        if (Physics.Raycast(GameObject.Find("PlayerSkeleton(Clone)").transform.position, Vector3.down, out RaycastHit hit, LayerMask.GetMask("Ground"))
-        && hit.collider.transform.parent == transform.parent) {
-            animator.SetBool(playerFoundHash, true);
-            agent.SetDestination(LevelManager.Instance.deadSprites[0].transform.position);
-        }
+        // // Found skeleton
+        // if (Physics.Raycast(GameObject.Find("PlayerSkeleton(Clone)").transform.position, Vector3.down, out RaycastHit hit, LayerMask.GetMask("Ground"))
+        // && hit.collider.transform.parent == transform.parent) {
+        //     animator.SetBool(playerFoundHash, true);
+        //     agent.SetDestination(LevelManager.Instance.deadSprites[0].transform.position);
+        // }
 
-        else if (player.GetComponent<PlayerController>().currentRoom == transform.parent.gameObject) {
+        if (player.GetComponent<PlayerController>().currentRoom == transform.parent.gameObject) {
             animator.SetBool(playerFoundHash, true);
             agent.SetDestination(player.transform.position);
         }
