@@ -164,6 +164,10 @@ public class LevelManager : MonoBehaviour
                 {
                     vfx.enabled = true;
                 }
+
+                foreach (SpriteRenderer sr in room.GetComponentsInChildren<SpriteRenderer>()) {
+                    sr.enabled = true;
+                }
             }
 
             else
@@ -176,6 +180,10 @@ public class LevelManager : MonoBehaviour
                 foreach (VisualEffect vfx in room.GetComponentsInChildren<VisualEffect>())
                 {
                     vfx.enabled = false;
+                }
+
+                foreach (SpriteRenderer sr in room.GetComponentsInChildren<SpriteRenderer>()) {
+                    sr.enabled = false;
                 }
             }
 

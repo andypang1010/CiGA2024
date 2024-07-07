@@ -81,34 +81,19 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (interactPressed) {
-            switch (closestInteractable.tag)
-            {
-                case "Door":
-                    closestInteractable.GetComponent<MeshRenderer>().enabled = false;
-                    closestInteractable.GetComponent<MeshCollider>().enabled = false;
-                    break;
-                case "Pushable":
-                    closestInteractable.GetComponent<Rigidbody>().isKinematic = !closestInteractable.GetComponent<Rigidbody>().isKinematic;
-                    break;
-                case "Portal":
-                    // TODO: Find destination and teleport there
-                    break;
-                case "Trap":
-                    print("Trap triggered");
-                    break;
-                default:
-                    break;
-            }
+        if (interactPressed && closestInteractable.CompareTag("Portal")) {
+            print("Portal");
+            // Find destination and teleport there
+            SadDoorAction sadDoorAction = closestInteractable.GetComponentInParent<SadDoorAction>();
+            
+            sadDoorAction.objectAction.StartMoveUp();
+            transform.position = sadDoorAction.destination.position;
         }
 
-        else if (mummyUndressed) {
-            if (closestInteractable.CompareTag("NPC")) {
+        if (mummyUndressed && closestInteractable.CompareTag("NPC")) {
                 // TODO: Destroy mummy
 
                 // TODO: Instantiate a skeleton
-            }
-        }
-            
+        }            
     }
 }
