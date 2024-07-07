@@ -7,6 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 public class LevelManager : MonoBehaviour
 {
@@ -141,21 +142,24 @@ public class LevelManager : MonoBehaviour
             {
                 virtualCamera.Follow = roomFloor.transform;
 
-                for (int i = 1; i < room.transform.childCount; i++)
-                {
-                    room.transform.GetChild(i).gameObject.SetActive(true);
-                    // print(room.transform.GetChild(i).gameObject);
+                foreach (MeshRenderer mr in room.GetComponentsInChildren<MeshRenderer>()) {
+                    mr.enabled = true;
                 }
-                roomFloor.GetComponentInChildren<MeshRenderer>().enabled = true;
+
+                foreach (VisualEffect vfx in room.GetComponentsInChildren<VisualEffect>()) {
+                    vfx.enabled = true;
+                }
             }
+
             else
             {
-                for (int i = 1; i < room.transform.childCount; i++)
-                {
-                    room.transform.GetChild(i).gameObject.SetActive(false);
-                    // print(room.transform.GetChild(i).gameObject);
+                foreach (MeshRenderer mr in room.GetComponentsInChildren<MeshRenderer>()) {
+                    mr.enabled = false;
                 }
-                roomFloor.GetComponentInChildren<MeshRenderer>().enabled = false;
+
+                foreach (VisualEffect vfx in room.GetComponentsInChildren<VisualEffect>()) {
+                    vfx.enabled = false;
+                }
             }
 
             roomFloor.SetActive(true);
