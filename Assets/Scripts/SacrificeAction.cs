@@ -5,6 +5,7 @@ public class SacrificeAction : MonoBehaviour
     public float boxCastDistance = 5f; // The length of the box cast
     public Vector3 boxCastSize = new Vector3(0.5f, 0.5f, 0.5f); // Size of the box cast
     public LayerMask playerLayer; // Layer to detect the player
+    public GameObject coin;
 
     void Update()
     {
@@ -31,9 +32,10 @@ public class SacrificeAction : MonoBehaviour
         {
             Debug.Log("Player is in the sacrifice!");
 
-            // Find a object with name "COIN1"
-            GameObject coin = GameObject.Find("COIN1");
-            coin.GetComponent<MeshRenderer>().enabled = true;
+            if (coin.name == "COIN1" && !LevelManager.Instance.coin1Spawned
+            || coin.name == "COIN2" && !LevelManager.Instance.coin2Spawned) {
+                coin.SetActive(true);
+            }
         }
         else
         {

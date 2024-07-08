@@ -21,6 +21,7 @@ public class CoinAction : MonoBehaviour
         {
             if (hasPickedUp) return;
             LevelManager.Instance.hasCoin1 = true;
+            LevelManager.Instance.coin1Spawned = true;
             hasPickedUp = true;
             StartCoroutine(PlayPickupAnimation());
         }

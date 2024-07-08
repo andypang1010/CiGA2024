@@ -1914,7 +1914,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.28585175, y: 0.040004797, z: -0.010191331, w: 0.9573843}
+  m_LocalRotation: {x: 0.28584522, y: 0.04049105, z: -0.010272185, w: 0.9573649}
   m_LocalPosition: {x: -1.0464752, y: 6.97447, z: -7.4186525}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8359,10 +8359,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1291394349}
     m_Modifications:
+    - target: {fileID: 613572183099868879, guid: 899a54520dfccd14aa6ea80ef9805761,
+        type: 3}
+      propertyPath: m_Name
+      value: COIN2
+      objectReference: {fileID: 0}
     - target: {fileID: 1649675234115999862, guid: 899a54520dfccd14aa6ea80ef9805761,
         type: 3}
       propertyPath: m_Name
       value: SACRIFICE
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286017077089696811, guid: 899a54520dfccd14aa6ea80ef9805761,
+        type: 3}
+      propertyPath: coin
+      value: 
+      objectReference: {fileID: 1396621795}
+    - target: {fileID: 4286017077089696811, guid: 899a54520dfccd14aa6ea80ef9805761,
+        type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6609794881572143857, guid: 899a54520dfccd14aa6ea80ef9805761,
         type: 3}
@@ -9576,6 +9591,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: f6686246bce8b3c41ac6f94a8c850e48, type: 3}
+--- !u!1 &1678634587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 613572183099868879, guid: 899a54520dfccd14aa6ea80ef9805761,
+    type: 3}
+  m_PrefabInstance: {fileID: 1908123245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1690446704
 GameObject:
   m_ObjectHideFlags: 0
@@ -10648,10 +10669,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 613572183099868879, guid: 899a54520dfccd14aa6ea80ef9805761,
+        type: 3}
+      propertyPath: m_Name
+      value: COIN1
+      objectReference: {fileID: 0}
     - target: {fileID: 1649675234115999862, guid: 899a54520dfccd14aa6ea80ef9805761,
         type: 3}
       propertyPath: m_Name
       value: SACRIFICE
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286017077089696811, guid: 899a54520dfccd14aa6ea80ef9805761,
+        type: 3}
+      propertyPath: coin
+      value: 
+      objectReference: {fileID: 1678634587}
+    - target: {fileID: 4286017077089696811, guid: 899a54520dfccd14aa6ea80ef9805761,
+        type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6609794881572143857, guid: 899a54520dfccd14aa6ea80ef9805761,
         type: 3}

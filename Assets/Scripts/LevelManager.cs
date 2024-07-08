@@ -21,6 +21,8 @@ public class LevelManager : MonoBehaviour
     public CinemachineVirtualCamera virtualCamera;
     bool hasInstantiatedBodies = false;
 
+    public bool coin1Spawned = false;
+    public bool coin2Spawned = false;
     public bool hasCoin1 = false;
     public bool hasCoin2 = false;
     public bool moveBed = false;
