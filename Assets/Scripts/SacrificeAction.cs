@@ -32,8 +32,8 @@ public class SacrificeAction : MonoBehaviour
         {
             Debug.Log("Player is in the sacrifice!");
 
-            if (coin.name == "COIN1" && !LevelManager.Instance.coin1Spawned
-            || coin.name == "COIN2" && !LevelManager.Instance.coin2Spawned) {
+            if (coin.name == "COIN1" && !LevelManager.Instance.hasCoin1
+            || coin.name == "COIN2" && !LevelManager.Instance.hasCoin2) {
                 coin.SetActive(true);
             }
         }
