@@ -41,7 +41,7 @@ public class AIController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other) {
+    void OnTriggerEnter(Collider other) {
         if (other.transform.gameObject.name == "PLAYER") {
             // Play attack animation
             animator.SetBool(collidedHash, true);
