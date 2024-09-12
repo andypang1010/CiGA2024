@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float groundDistance;
     public GameObject currentRoom;
 
+    public float interactionRadius = 1f;
     public LayerMask groundLayer;
     public SpriteRenderer sr;
     public GameObject mummySkeleton;
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        GameObject[] interactables = Physics.OverlapSphere(transform.position, 1f, LayerMask.GetMask("Interactable")).Select(collider => collider.gameObject).ToArray();
+        GameObject[] interactables = Physics.OverlapSphere(transform.position, interactionRadius, LayerMask.GetMask("Interactable")).Select(collider => collider.gameObject).ToArray();
 
         if (interactables.Length == 0)
         {
@@ -74,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (GameObject interactable in interactables)
         {
+
             float currentDistance = Vector3.Distance(transform.position, interactable.transform.position);
             if (currentDistance < closestDistance)
             {
@@ -103,5 +105,11 @@ public class PlayerController : MonoBehaviour
             Destroy(closestInteractable);
 
         }            
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.white;
+
+        Gizmos.DrawWireSphere(transform.position, interactionRadius);
     }
 }

@@ -1,3 +1,6 @@
-真难得有人拜访我！尤其是同行
-墓室里的小狗一直很喜欢骨头
-你有尝试过打开木乃伊的绷带吗？按‘k’就可以，多么明显，打开的‘kai’的第一个字母
+Kudos for making it this far!
+I haven't expected someone to ever come visit me.
+It gets really lonely around here.
+Oh by the way, have you tried unwrapping a mummy? It's really ASMR I heard.
+Remember to try pressing K whenever you are near one.
+HEHEHEHEHEHE!

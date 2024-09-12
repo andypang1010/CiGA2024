@@ -39,7 +39,7 @@ public class ButtonAction : MonoBehaviour
                                         Quaternion.identity,
                                         1f,
                                         playerLayer,
-                                        QueryTriggerInteraction.Collide);
+                                        QueryTriggerInteraction.Ignore);
 
         if (isPlayerOnButton && !hasMovedUp)
         {

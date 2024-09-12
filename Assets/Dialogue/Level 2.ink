@@ -1,5 +1,5 @@
-胡狼是个有钱的小气鬼
-虽然很讨厌胡狼，但他确实不像隔壁的狗一样吵
-狼和狗爱好都差不多吧，就骨头那一套
-柜子后面总是有哼哼唧唧的声音
-柜子后面的声音真像之前那个整天不高兴的家伙，你不知道吧，他的灵魂被永远锁在门里了
+Psss! Come over here!
+I think I just saw your dad come by a few minutes ago, he looks just like you.
+Anyway, I heard there are a few token somewhere in here that unlocks secret passages.
+Shhh... Don't tell anybody that, you're the only person who seems trustworthy around here. I swear!
+Oh by the way, that's my neighbor there, that big wolf sitting on the podium. He's been there for quite a while now, and he never wants to leave. I bet there's some good stuff around there!

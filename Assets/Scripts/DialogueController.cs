@@ -134,8 +134,4 @@ public class DialogueController : MonoBehaviour
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
     }
-
-    void OnDrawGizmos() {
-        Gizmos.DrawWireSphere(player.transform.position, 1f);
-    }
 }

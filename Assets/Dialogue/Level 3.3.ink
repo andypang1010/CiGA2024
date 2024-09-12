@@ -1,1 +1,3 @@
-这是我生前最喜欢的狗，我和它葬在一个墓室
+That is Abutiu over here.
+He was my favorite dog.
+I really miss him.

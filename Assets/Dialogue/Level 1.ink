@@ -1,7 +1,5 @@
-嘿嘿，又一个新来的
-我当然不是法老，只不过是他选的陪葬，法老在你后面的屋里
-真希望你爷爷腐烂的快一点，我可不想要这么多室友
-不要太沮丧，这个墓室可是无数盗墓贼的噩梦
-有没有试试罐子旁边的机关，我觉得或许有用
-一定是你偷了法老的东西
-你知道这个整天哭丧着脸的家伙，他是个守财奴，只要有金币一定能让他开口
+Oh, look at what we have here, a "new" friend!
+Lemme tell you a secret, I literally just had a chat with your ancestors a minute ago!
+Don't you worry now, you'll soon turn into one of those skeletons yourself, just like your dad, his dad, his dad, and his dad before him!
+Look at that timer on your head, you have 20 seconds to make it out of here. Otherwise, you die! Haha! Isn't that fun?
+If you wanna get out of here, try starting with stepping on that big squishy button by the vase at the corner, you'll thank me later!
