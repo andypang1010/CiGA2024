@@ -165,11 +165,13 @@ public class LevelManager : MonoBehaviour
                     vfx.enabled = true;
                 }
 
-                foreach (SpriteRenderer sr in room.GetComponentsInChildren<SpriteRenderer>()) {
+                foreach (SpriteRenderer sr in room.GetComponentsInChildren<SpriteRenderer>())
+                {
                     sr.enabled = true;
                 }
 
-                foreach (Canvas canvas in room.GetComponentsInChildren<Canvas>()) {
+                foreach (Canvas canvas in room.GetComponentsInChildren<Canvas>())
+                {
                     canvas.enabled = true;
                 }
             }
@@ -186,11 +188,13 @@ public class LevelManager : MonoBehaviour
                     vfx.enabled = false;
                 }
 
-                foreach (SpriteRenderer sr in room.GetComponentsInChildren<SpriteRenderer>()) {
+                foreach (SpriteRenderer sr in room.GetComponentsInChildren<SpriteRenderer>())
+                {
                     sr.enabled = false;
                 }
 
-                foreach (Canvas canvas in room.GetComponentsInChildren<Canvas>()) {
+                foreach (Canvas canvas in room.GetComponentsInChildren<Canvas>())
+                {
                     canvas.enabled = false;
                 }
             }
@@ -202,6 +206,11 @@ public class LevelManager : MonoBehaviour
     void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         GameObject environment = GameObject.Find("ENVIRONMENT");
+        if (environment == null)
+        {
+            Debug.LogWarning("No environment found in scene: " + scene.name + "maybe this is not the game scene. Returning.");
+            return;
+        }
 
         rooms.Clear();
 

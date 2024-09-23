@@ -12,4 +12,14 @@ public class MenuController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void GoToHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
 }
