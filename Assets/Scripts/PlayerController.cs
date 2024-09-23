@@ -24,6 +24,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // check if ESC is pressed
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.Instance.PauseGame();
+        }
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         interactPressed = Input.GetKeyDown(KeyCode.E);
@@ -84,30 +90,35 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (interactPressed && closestInteractable.CompareTag("Portal")) {
+        if (interactPressed && closestInteractable.CompareTag("Portal"))
+        {
             print("Portal");
             // Find destination and teleport there
-            if (closestInteractable.transform.parent.gameObject.TryGetComponent(out SadDoorAction sadDoorAction)) {
+            if (closestInteractable.transform.parent.gameObject.TryGetComponent(out SadDoorAction sadDoorAction))
+            {
                 sadDoorAction.objectAction.StartMoveUp();
                 transform.position = sadDoorAction.destination.position;
             }
 
-            else if (closestInteractable.transform.parent.gameObject.TryGetComponent(out SadDoor2Action sadDoor2Action)) {
+            else if (closestInteractable.transform.parent.gameObject.TryGetComponent(out SadDoor2Action sadDoor2Action))
+            {
                 transform.position = sadDoor2Action.destination.position;
             }
 
         }
 
-        if (mummyUndressed && closestInteractable.CompareTag("NPC")) {
+        if (mummyUndressed && closestInteractable.CompareTag("NPC"))
+        {
             print("Mummy");
-            
+
             Instantiate(mummySkeleton, closestInteractable.transform.position, closestInteractable.transform.rotation);
             Destroy(closestInteractable);
 
-        }            
+        }
     }
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos()
+    {
         Gizmos.color = Color.white;
 
         Gizmos.DrawWireSphere(transform.position, interactionRadius);

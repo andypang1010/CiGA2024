@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public bool IsGamePaused { get; private set; }
     public int PlayerScore { get; private set; }
     public int PlayerLives { get; private set; }
-    public enum GameState { MainMenu, Playing, Paused, GameOver }
+    public enum GameState { MainMenu, Playing, Paused, GameOver, HowToPlay }
     public GameState CurrentState;
 
     private void Awake()
@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
         IsGamePaused = false;
         PlayerScore = 0;
         PlayerLives = 3;
+    }
+
+    private void Update()
+    {
     }
 
     // This method is used to test the level loading functionality 
@@ -61,14 +65,26 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        GameObject PauseScene = GameObject.Find("PauseScene");
+        for (int i = 0; i < PauseScene.transform.childCount; i++)
+        {
+            PauseScene.transform.GetChild(i).gameObject.SetActive(true);
+        }
         IsGamePaused = true;
         Time.timeScale = 0f;
+        CurrentState = GameState.Paused;
     }
 
     public void ResumeGame()
     {
+        GameObject PauseScene = GameObject.Find("PauseScene");
+        for (int i = 0; i < PauseScene.transform.childCount; i++)
+        {
+            PauseScene.transform.GetChild(i).gameObject.SetActive(false);
+        }
         IsGamePaused = false;
         Time.timeScale = 1f;
+        CurrentState = GameState.Playing;
     }
 
     private void GameOver()
@@ -88,5 +104,33 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         LevelManager.Instance.RestartCurrentLevel();
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void GoToHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+
+    public void GoToTemporaryHowToPlay()
+    {
+        GameObject temp = GameObject.Find("HowToPlayScene");
+        for (int i = 0; i < temp.transform.childCount; i++)
+        {
+            temp.transform.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+
+    public void CloseTemporaryHowToPlay()
+    {
+        GameObject temp = GameObject.Find("HowToPlayScene");
+        for (int i = 0; i < temp.transform.childCount; i++)
+        {
+            temp.transform.GetChild(i).gameObject.SetActive(false);
+        }
     }
 }
