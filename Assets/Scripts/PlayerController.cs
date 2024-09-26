@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
             GameManager.Instance.PauseGame();
         }
 
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            GetComponent<PlayerDeath>().Die();
+        }
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         interactPressed = Input.GetKeyDown(KeyCode.E);
