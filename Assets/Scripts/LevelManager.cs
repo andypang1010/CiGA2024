@@ -208,7 +208,7 @@ public class LevelManager : MonoBehaviour
         GameObject environment = GameObject.Find("ENVIRONMENT");
         if (environment == null)
         {
-            Debug.LogWarning("No environment found in scene: " + scene.name + "maybe this is not the game scene. Returning.");
+            Debug.LogWarning("No environment found in scene: " + scene.name + " maybe this is not the game scene. Returning.");
             return;
         }
 

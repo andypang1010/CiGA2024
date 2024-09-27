@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        Debug.Log("Game Paused!");
         GameObject PauseScene = GameObject.Find("PauseScene");
         for (int i = 0; i < PauseScene.transform.childCount; i++)
         {
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        Debug.Log("Resuming game!");
         GameObject PauseScene = GameObject.Find("PauseScene");
         for (int i = 0; i < PauseScene.transform.childCount; i++)
         {
@@ -108,6 +111,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 
