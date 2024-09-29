@@ -120,8 +120,10 @@ public class LevelManager : MonoBehaviour
             // Instantiate a body at the death position
             GameObject bodyPrefab = deadSprites[index];
             GameObject body = Instantiate(bodyPrefab, deathPos, Quaternion.identity);
+            // set the sprite of the body
             switch (index)
             {
+
                 case 0:
                     body.GetComponentInChildren<SpriteRenderer>().sprite = Resources.Load<Sprite>("Death4"); ;
                     break;
@@ -138,10 +140,8 @@ public class LevelManager : MonoBehaviour
                     body.GetComponentInChildren<SpriteRenderer>().color = Color.white;
                     break;
             }
-
             index++;
         }
-
         hasInstantiatedBodies = true;
     }
 
