@@ -5,7 +5,7 @@ public class MenuController : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("CG");
+        SceneManager.LoadScene("Game");
         GameManager.Instance.CurrentState = GameManager.GameState.Playing;
     }
 
